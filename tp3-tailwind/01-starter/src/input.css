@@ -1,0 +1,256 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Slackey&family=Rubik+Dirt&display=swap');
+
+@theme {
+        --color-primary: #E7272D;
+        --color-secondary: #FBB217;
+        --text-neutral: rgba(0, 0, 0, 0.5);
+        --font-title: 'Slackey', cursive;
+        --font-price: 'Rubik Dirt', cursive;
+}
+
+@layer components {
+    .btn-commande {
+        @apply bg-primary text-white text-2xl rounded-xl px-6 py-2;
+    }
+}
+
+@layer utilities {
+    .font-title {
+        font-family: var(--font-title);
+    }
+
+    .font-price {
+        font-family: var(--font-price);
+    }
+}
+
+@layer base {
+
+    /* Global styles */
+    body {
+        @apply font-sans;
+    }
+
+    /* Header */
+    .header {
+        @apply bg-[url(../images/background-slate.jpg)] py-10;
+
+        .top {
+            @apply flex flex-col items-center justify-center;
+        }
+
+        .menu-link {
+            @apply text-white px-5 text-3xl font-title;
+        }
+    }
+
+    /* Featured section */
+    .featured {
+        @apply flex flex-col-reverse;
+    }
+
+    /* Content section */
+    .content {
+        @apply flex justify-center items-center flex-col gap-4;
+
+        h1 {
+            @apply text-white text-5xl font-title;
+        }
+
+        .price {
+            @apply font-title text-5xl text-secondary;
+        }
+    }
+
+    /* Button large */
+    .btn-lg {
+        @apply bg-primary text-white font-bold py-2 px-5 rounded;
+    }
+
+    /* Suggestions */
+    .suggests {
+        @apply flex justify-center items-center flex-col mb-10;
+
+        h2 {
+            @apply text-primary font-title text-3xl mt-6;
+        }
+
+        .content {
+            @apply flex gap-5;
+
+            div {
+                @apply flex flex-col justify-center items-center;
+            }
+        }
+
+        img {
+            @apply w-full h-auto;
+        }
+
+        h3 {
+            @apply text-amber-50 bg-primary py-2 px-5 rounded-2xl font-title text-2xl mb-3.5;
+        }
+
+        p {
+            @apply px-7 text-justify text-gray-500;
+        }
+
+        .price {
+            @apply h-3 text-primary font-title text-2xl;
+        }
+    }
+
+    /* Newsletter */
+    .newsletter {
+        @apply bg-secondary py-10 w-[95%] m-auto;
+
+        h2 {
+            @apply text-primary text-center text-2xl font-title mb-6;
+        }
+
+        .content {
+            @apply flex justify-center;
+        }
+
+        form {
+            @apply flex flex-col items-center w-full max-w-md;
+        }
+
+        input {
+            @apply bg-amber-50 px-4 py-2 mb-4 w-full rounded-lg;
+        }
+
+        button {
+            @apply bg-primary text-white px-6 py-2 rounded-lg mt-2 w-full;
+        }
+    }
+
+    /* Testimony */
+    .testimony {
+        @apply flex flex-col justify-center items-center gap-10 mt-6;
+
+        h2 {
+            @apply text-primary font-title text-3xl;
+        }
+
+        .content {
+            @apply flex flex-col gap-5;
+
+            div {
+                @apply flex flex-col justify-center items-center gap-2;
+            }
+        }
+
+        img {
+            @apply rounded-full border border-primary border-4;
+        }
+
+        h3 {
+            @apply font-title text-primary text-2xl;
+        }
+
+        .fa-star {
+            @apply text-secondary;
+        }
+
+        .text-justify {
+            @apply px-5 text-justify text-gray-500;
+        }
+    }
+
+    /* Footer */
+    .footer {
+        @apply bg-black mt-4 flex flex-col items-center justify-center;
+
+        img {
+            @apply m-auto;
+        }
+
+        .links {
+            @apply flex flex-col items-center justify-center;
+        }
+        .follow{
+            @apply flex flex-col items-center justify-center;
+
+        }
+
+        h3 {
+            @apply text-primary font-title text-3xl;
+        }
+
+        a {
+            @apply text-secondary;
+        }
+
+
+
+
+        .legal {
+            @apply border-t border-t-white text-gray-600 w-full text-center mt-5;
+        }
+
+    }
+
+    @media (min-width: 768px) {
+        .header {
+            @apply pt-0;
+            .menu-link{
+                @apply text-xl;
+            }
+            .top {
+                @apply flex flex-row justify-between;
+            }
+            .featured{
+                @apply flex flex-row justify-center items-center;
+            }
+        }
+
+        .suggests{
+            .content{
+                @apply flex flex-row justify-center items-center;
+            }
+            .burgers{
+                @apply w-1/3;
+            }
+        }
+
+        .newsletter {
+            .content {
+                @apply w-full;
+                form {
+                    @apply w-max flex flex-row items-center justify-center gap-10;
+                    max-width: none;
+                }
+                button {
+
+                    @apply mt-0 px-3;
+                }
+                input {
+                    @apply mb-0 pr-5;
+                }
+            }
+        }
+
+        .testimony{
+            .content{
+                @apply flex flex-row;
+            }
+            .profile{
+                @apply w-1/4;
+            }
+        }
+
+        .footer {
+            .content{
+                @apply w-full flex flex-row justify-around;
+            }
+
+            img{
+                @apply m-0
+            }
+        }
+
+    }
+}
+
