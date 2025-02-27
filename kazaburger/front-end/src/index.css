@@ -55,16 +55,21 @@
 	/**** Produits en vedette ***/
 	.featured {
 		@apply flex flex-col items-center md:flex-row py-10 md:mx-auto bg-[url('src/assets/images/background-slate.jpg')] bg-cover bg-center md:justify-around;
-		.content {
-			@apply order-2 md:order-1 text-center space-y-2 md:space-y-10;
-			.price {
-				@apply text-secondary text-5xl md:text-7xl;
-			}
-		}
 
-		.picture {
-			@apply order-1 md:order-2;
-		}
+			@apply relative flex flex-col md:flex-row justify-evenly h-full mx-auto overflow-hidden px-20 md:items-center bg-black/20 ;
+			button {@apply absolute cursor-pointer top-1/2 transform -translate-y-1/2 text-white/20 hover:text-secondary/50 text-7xl mx-10;}
+			.content {
+				@apply order-2 md:order-1 text-center space-y-2 md:space-y-10;
+				.price {
+					@apply text-secondary text-5xl md:text-7xl;
+				}
+			}
+
+			.picture {
+				@apply order-1 md:order-2;
+			}
+
+
 	}
 
 	/**** Suggestions ***/
