@@ -6,7 +6,7 @@ function SuggestItem(props){
             <p>
                 {props.description}
             </p>
-            <span className="price h-3/3">{props.price}</span>
+            <span className="price h-3/3">{props.price} €</span>
         </div>
     )
 }

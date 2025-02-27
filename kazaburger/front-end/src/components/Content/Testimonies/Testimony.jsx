@@ -9,7 +9,7 @@ return(
             <Rating rating={props.rating}/>
         </span>
         <div>
-            {props.description}
+            {props.review}
         </div>
     </div>
 )

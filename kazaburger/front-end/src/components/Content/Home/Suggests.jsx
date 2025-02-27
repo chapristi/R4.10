@@ -1,41 +1,37 @@
 import SuggestItem from "../Suggests/SuggestItem.jsx";
+import useFetch from "../../../services/useFecth.js";
+import {shuffleArray} from "../../../services/arrayServices.js";
 
-function Suggests(){
-    const data = [
-        {
-            image: "src/assets/images/classic-burger.jpg",
-            imageAlt: "Classic burger",
-            title: "Classic burger",
-            description:
-                "Le classNameic Burger est un délicieux sandwich à base d'un pain brioché moelleux et doré à point, qui renferme un savoureux steak haché de bœuf grillé à la perfection. Il est parfait pour les petites faims.",
-            price: "6.90 €",
-        },
-        {
-            image: "src/assets/images/kingdom-burger.jpg",
-            imageAlt: "kingdom burger",
-            title: "Kingdom burger",
-            description:
-                "Le Kingdom Burger est un délicieux sandwich à base d'un pain brioché moelleux et doré à point, qui renferme deux savoureux steaks hachés de bœuf grillé à la perfection. Il est parfait pour les gourmands !",
-            price: "7.90 €",
-        },
-        {
-            image: "src/assets/images/supreme-burger.jpg",
-            imageAlt: "supreme burger",
-            title: "Suprême burger",
-            description:
-                "Le Suprême Burger est un délicieux sandwich à base d'un pain brioché moelleux et doré à point, qui renferme un savoureux steak haché avec des rondelles de tomates et du cheddar.",
-            price: "9.90 €",
-        },
-    ];
+function Suggests() {
+    const { data, loading, error } = useFetch("http://kazaburger.e-mingo.net/api/suggest");
 
-    return(
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    const firstThreeItems = shuffleArray(data, 3);
+    const genericImage = "src/assets/images/no-image-available.jpeg";
+
+    return (
         <section className="suggests">
             <h2>Nos suggestions</h2>
             <div className="content">
-                {data.map((item,i)=><SuggestItem key={i} image={item.image} imageAlt={item.imageAlt} price={item.price} title={item.title} description={item.description} />)}
+                {firstThreeItems.map((item, i) => (
+                    <SuggestItem
+                        key={i}
+                        image={item.product.pictures[0] || genericImage}
+                        imageAlt={item.product.title}
+                        price={item.product.price}
+                        title={item.product.title}
+                        description={item.description}
+                    />
+                ))}
             </div>
         </section>
-    )
+    );
 }
 
 export default Suggests;

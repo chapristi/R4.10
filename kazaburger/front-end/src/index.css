@@ -75,7 +75,7 @@
 			> div {
 				@apply pb-5 border-b-2 border-solid md:border-0 text-center;
 				img {
-					@apply mx-auto;
+					@apply mx-auto rounded-md h-70 w-96 object-cover mb-5;
 				}
 				p {
 					@apply text-justify flex-grow h-20;
